@@ -8,7 +8,11 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@alphardex/aqua.css": "^1.6.9",
     "core-js": "^3.6.5",
+    "glslify": "^7.1.1",
+    "normalize.css": "^8.0.1",
+    "three": "^0.133.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -26,6 +30,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
+    "glslify-loader": "^2.0.0",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",
