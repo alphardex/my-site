@@ -1,5 +1,16 @@
 <template>
-  <div class="grid-icosahedron w-screen h-screen"></div>
+  <div
+    class="
+      grid-icosahedron
+      absolute
+      z-0
+      top-0
+      left-0
+      w-screen
+      h-screen
+      overflow-hidden
+    "
+  ></div>
 </template>
 
 <script lang="ts">
