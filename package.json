@@ -9,14 +9,18 @@
   },
   "dependencies": {
     "@alphardex/aqua.css": "^1.6.9",
+    "cannon-es": "^0.18.0",
     "core-js": "^3.6.5",
+    "dat.gui": "^0.7.7",
     "glslify": "^7.1.1",
+    "kyouka": "^1.2.8",
     "normalize.css": "^8.0.1",
     "three": "^0.133.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@types/three": "^0.133.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -33,6 +37,7 @@
     "glslify-loader": "^2.0.0",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
+    "raw-loader": "^4.0.2",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5"
   },
@@ -51,7 +56,16 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/camelcase": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-this-alias": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "prefer-const": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
   },
   "browserslist": [
     "> 1%",
