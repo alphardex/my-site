@@ -29,7 +29,7 @@ class GridIcosahedron extends Base {
     this.clock = new THREE.Clock();
     this.cameraPosition = new THREE.Vector3(0, 0, 2);
     this.params = {
-      uNoiseDensity: 0,
+      noiseDensity: 0, // 噪声扭曲顶点强度
     };
   }
   // 初始化
@@ -38,8 +38,8 @@ class GridIcosahedron extends Base {
     this.createPerspectiveCamera();
     this.createRenderer();
     this.createGridIcosahedronShapeMaterial();
-    this.createGridIcosahedronEdgeMaterial();
     this.createIcoShape();
+    this.createGridIcosahedronEdgeMaterial();
     this.createIcoEdge();
     this.createPostprocessingEffect();
     this.createLight();
@@ -74,11 +74,20 @@ class GridIcosahedron extends Base {
           value: 0.2,
         },
         uNoiseDensity: {
-          value: this.params.uNoiseDensity,
+          value: this.params.noiseDensity,
         },
       },
     });
     this.gridIcosahedronShapeMaterial = gridIcosahedronShapeMaterial;
+  }
+  // 创建二十面体图形
+  createIcoShape() {
+    const geometry = new THREE.IcosahedronBufferGeometry(1, 1);
+    const material = this.gridIcosahedronShapeMaterial;
+    this.createMesh({
+      geometry,
+      material,
+    });
   }
   // 创建边框材质
   createGridIcosahedronEdgeMaterial() {
@@ -100,20 +109,11 @@ class GridIcosahedron extends Base {
           value: 1,
         },
         uNoiseDensity: {
-          value: this.params.uNoiseDensity,
+          value: this.params.noiseDensity,
         },
       },
     });
     this.gridIcosahedronEdgeMaterial = gridIcosahedronEdgeMaterial;
-  }
-  // 创建二十面体图形
-  createIcoShape() {
-    const geometry = new THREE.IcosahedronBufferGeometry(1, 1);
-    const material = this.gridIcosahedronShapeMaterial;
-    this.createMesh({
-      geometry,
-      material,
-    });
   }
   // 创建二十面体边框
   createIcoEdge() {

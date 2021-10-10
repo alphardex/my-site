@@ -11,7 +11,7 @@ export default {};
 
 <style lang="scss">
 :root {
-  --purple-grad-1: radial-gradient(at 50% 0%, #343299 0%, transparent 100%),
+  --blue-grad-1: radial-gradient(at 50% 0%, #343299 0%, transparent 100%),
     linear-gradient(#0e1242 0%, #0e1242 100%);
   --red-color-1: #fa2354;
   --red-color-2: #{transparentize(#fa2354, 0.75)};
@@ -36,8 +36,8 @@ $colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
   }
 }
 
-.bg-purple-grad-1 {
-  background: var(--purple-grad-1);
+.bg-blue-grad-1 {
+  background: var(--blue-grad-1);
 }
 
 .h-05 {
