@@ -78,8 +78,8 @@ class NoiseMarble extends Base {
     await this.loadEnvmap();
     this.createNoiseMarbleMaterial();
     this.createSphere();
-    // this.createOrbitControls();
-    // this.autoRotateOrbitControl();
+    this.createOrbitControls();
+    this.autoRotateOrbitControl();
     // this.createDebugPanel();
     this.addListeners();
     this.setLoop();
@@ -146,6 +146,7 @@ class NoiseMarble extends Base {
   }
   // 自动旋转场景
   autoRotateOrbitControl() {
+    this.controls.enableZoom = false;
     this.controls.autoRotate = true;
   }
   // 动画
