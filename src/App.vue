@@ -11,8 +11,8 @@ export default {};
 
 <style lang="scss">
 :root {
-  --purple-grad-1: radial-gradient(at 50% 0%, #723da9 0%, transparent 100%),
-    linear-gradient(#29183a 0%, #29183a 100%);
+  --purple-grad-1: radial-gradient(at 50% 0%, #343299 0%, transparent 100%),
+    linear-gradient(#0e1242 0%, #0e1242 100%);
   --red-color-1: #fa2354;
   --red-color-2: #{transparentize(#fa2354, 0.75)};
   --info-color: var(--red-color-1);
