@@ -1,3 +1,5 @@
+import imagesLoaded from "imagesloaded";
+
 // 获取归一化的鼠标位置
 const getNormalizedMousePos = (e: MouseEvent | Touch) => {
   return {
@@ -6,4 +8,11 @@ const getNormalizedMousePos = (e: MouseEvent | Touch) => {
   };
 };
 
-export { getNormalizedMousePos };
+// 图片预加载
+const preloadImages = (sel = "img") => {
+  return new Promise((resolve) => {
+    imagesLoaded(sel, { background: true }, resolve);
+  });
+};
+
+export { getNormalizedMousePos, preloadImages };

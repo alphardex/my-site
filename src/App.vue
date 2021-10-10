@@ -48,12 +48,6 @@ $colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
   width: 1000px;
 }
 
-.btn {
-  --btn-radius: 0;
-
-  display: inline-flex;
-}
-
 .triangle-right {
   width: 0;
   height: 0;

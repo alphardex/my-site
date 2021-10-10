@@ -12,9 +12,12 @@
     "cannon-es": "^0.18.0",
     "core-js": "^3.6.5",
     "dat.gui": "^0.7.7",
+    "glsl-constants": "^1.0.0",
     "glsl-noise": "0.0.0",
+    "glsl-rotate": "^1.1.0",
     "glslify": "^7.1.1",
     "gsap": "^3.8.0",
+    "imagesloaded": "^4.1.4",
     "kyouka": "^1.2.8",
     "normalize.css": "^8.0.1",
     "three": "^0.133.1",
@@ -22,6 +25,7 @@
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
+    "@types/imagesloaded": "^4.1.2",
     "@types/three": "^0.133.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
