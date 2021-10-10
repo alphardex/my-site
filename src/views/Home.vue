@@ -1,6 +1,7 @@
 <template>
   <div class="text-white bg-purple-grad-1 min-h-screen">
-    <grid-icosahedron class="fixed z-0 top-0 left-0"></grid-icosahedron>
+    <noise-marble class="fixed z-0 top-0 left-0"></noise-marble>
+    <grid-icosahedron class="fixed z-0 top-0 left-0 hidden"></grid-icosahedron>
     <div class="relative z-1">
       <div class="absolute top-20 left-20">
         <div class="font-bold text-lg cursor-pointer">ALPHA</div>
@@ -32,13 +33,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-// import NoiseMarble from "@/components/NoiseMarble.vue";
+import NoiseMarble from "@/components/NoiseMarble.vue";
 import GridIcosahedron from "@/components/GridIcosahedron.vue";
 import MyBtn from "@/components/MyBtn.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
+    NoiseMarble,
     GridIcosahedron,
     MyBtn,
   },
