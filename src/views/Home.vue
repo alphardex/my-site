@@ -3,7 +3,7 @@
     <grid-icosahedron class="fixed z-0 top-0 left-0"></grid-icosahedron>
     <div class="relative z-1">
       <div class="absolute top-20 left-20">
-        <div class="font-bold text-lg cursor-pointer">ALPHA</div>
+        <div class="font-bold text-lg cursor-pointer">ALPHARDEX</div>
       </div>
       <div class="absolute top-20 right-20">
         <div class="flex flex-col space-y-1 cursor-pointer">
