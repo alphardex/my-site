@@ -13,6 +13,9 @@ export default {};
 :root {
   --purple-grad-1: radial-gradient(at 50% 0%, #723da9 0%, transparent 100%),
     linear-gradient(#29183a 0%, #29183a 100%);
+  --red-color-1: #fa2354;
+  --red-color-2: #{transparentize(#fa2354, 0.75)};
+  --info-color: var(--red-color-1);
 }
 
 $colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
@@ -35,5 +38,27 @@ $colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
 
 .bg-purple-grad-1 {
   background: var(--purple-grad-1);
+}
+
+.h-05 {
+  height: 0.125rem;
+}
+
+.container {
+  width: 1000px;
+}
+
+.btn {
+  --btn-radius: 0;
+
+  display: inline-flex;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 7.5px;
+  border-color: transparent transparent transparent currentColor;
 }
 </style>
