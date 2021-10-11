@@ -71,7 +71,7 @@ export default defineComponent({
   background: var(--overlay-bg);
   transform-origin: top;
   transform: scaleY(0);
-  transition-duration: 0.4s;
+  transition-duration: var(--transition-duration);
 }
 
 .overlay-bottom {
@@ -80,7 +80,7 @@ export default defineComponent({
   background: var(--overlay-bg);
   transform-origin: bottom;
   transform: scaleY(0);
-  transition-duration: 0.4s;
+  transition-duration: var(--transition-duration);
 }
 
 .overlay-up-full-enter ~ .overlay-bottom {
@@ -93,7 +93,7 @@ export default defineComponent({
 }
 
 .overlay-up-full-enter-active ~ .overlay-bottom {
-  transition-timing-function: ease-in;
+  transition-timing-function: var(--ease-in-quart);
 }
 
 .overlay-up-full-enter-active ~ .overlay-bottom,
@@ -106,7 +106,7 @@ export default defineComponent({
 }
 
 .overlay-up-full-leave-active ~ .overlay-top {
-  transition-timing-function: ease;
+  transition-timing-function: var(--ease-out-quart);
 }
 
 .overlay-up-full-enter ~ .overlay-top,
@@ -118,6 +118,6 @@ export default defineComponent({
 
 .overlay-up-full-enter-active,
 .overlay-up-full-leave-active {
-  transition-duration: 0.4s;
+  transition-duration: var(--transition-duration);
 }
 </style>

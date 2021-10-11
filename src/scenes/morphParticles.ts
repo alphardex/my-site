@@ -18,7 +18,7 @@ class MorphParticles extends Base {
     this.cameraPosition = new THREE.Vector3(0, 0, 1.8);
     this.params = {
       rotateSpeed: 0.01,
-      pointColor: "#4ec0e9",
+      pointColor: "#323094",
     };
     this.currentTransition = 0;
   }

@@ -45,10 +45,6 @@ export default defineComponent({
 body {
   color: white;
   background: var(--blue-grad-1);
-
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
 }
 
 :root {
@@ -59,6 +55,7 @@ body {
   --info-color: var(--red-color-1);
   --overlay-bg: var(--info-color);
   --overlay-bg-2: var(--red-color-2);
+  --transition-duration: 0.4s;
 }
 
 // reset
