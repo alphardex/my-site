@@ -2,7 +2,7 @@
   <div class="relative z-1">
     <div class="absolute top-20 left-20">
       <router-link :to="{ name: 'Home' }">
-        <div class="font-bold text-lg">ALPHARDEX</div>
+        <div class="font-bold text-lg fade-in">ALPHARDEX</div>
       </router-link>
     </div>
     <div class="flex-center">

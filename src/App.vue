@@ -4,7 +4,7 @@
   </div>
   <div class="transition-all duration-1000" :class="{ 'opacity-0': loading }">
     <router-view v-slot="{ Component }">
-      <page-transition :name="`overlay-up-full`">
+      <page-transition :name="`fade`">
         <component :is="Component" />
       </page-transition>
     </router-view>

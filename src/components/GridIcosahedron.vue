@@ -9,6 +9,7 @@
       w-screen
       h-screen
       overflow-hidden
+      fade-in
     "
   ></div>
 </template>

@@ -1,6 +1,14 @@
 <template>
   <div
-    class="morph-particles absolute z-0 w-screen h-screen overflow-hidden"
+    class="
+      morph-particles
+      absolute
+      z-0
+      w-screen
+      h-screen
+      overflow-hidden
+      fade-in
+    "
   ></div>
 </template>
 
