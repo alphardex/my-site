@@ -1,9 +1,11 @@
 <template>
   <div class="relative z-1">
     <div class="absolute top-20 left-20">
-      <div class="font-bold text-lg cursor-pointer">ALPHARDEX</div>
+      <router-link :to="{ name: 'Home' }">
+        <div class="font-bold text-lg">ALPHARDEX</div>
+      </router-link>
     </div>
-    <div class="absolute top-20 right-20">
+    <div class="absolute top-20 right-20 hidden">
       <div class="flex flex-col space-y-1 cursor-pointer">
         <div class="w-6 h-05 bg-white rounded"></div>
         <div class="w-6 h-05 bg-white rounded"></div>
@@ -19,7 +21,9 @@
               <div>一个专注于</div>
               <div>创作特效的前端</div>
             </div>
-            <my-btn>关于我</my-btn>
+            <router-link :to="{ name: 'About' }">
+              <my-btn>关于我</my-btn>
+            </router-link>
           </div>
         </div>
       </div>

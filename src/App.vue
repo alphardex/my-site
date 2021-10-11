@@ -1,22 +1,73 @@
 <template>
-  <router-view />
+  <div class="transition-all duration-400" :class="{ 'opacity-0': !loading }">
+    <twisted-shape></twisted-shape>
+  </div>
+  <div class="transition-all duration-1000" :class="{ 'opacity-0': loading }">
+    <router-view v-slot="{ Component }">
+      <page-transition :name="`overlay-up-full`">
+        <component :is="Component" />
+      </page-transition>
+    </router-view>
+  </div>
 </template>
 
 <script lang="ts">
 import "normalize.css/normalize.css";
 import "@alphardex/aqua.css/dist/aqua.min.css";
+import TwistedShape from "@/components/TwistedShape.vue";
+import PageTransition from "@/components/PageTransition.vue";
+import { defineComponent } from "@vue/runtime-core";
+import { onMounted, reactive, toRefs } from "vue";
+import { preloadImages } from "./utils/dom";
+import ky from "kyouka";
 
-export default {};
+export default defineComponent({
+  name: "App",
+  components: {
+    TwistedShape,
+    PageTransition,
+  },
+  setup() {
+    const state = reactive({
+      loading: true,
+    });
+    onMounted(async () => {
+      await preloadImages();
+      state.loading = false;
+    });
+    return { ...toRefs(state) };
+  },
+});
 </script>
 
 <style lang="scss">
+body {
+  color: white;
+  background: var(--blue-grad-1);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 :root {
   --blue-grad-1: radial-gradient(at 50% 0%, #343299 0%, transparent 100%),
     linear-gradient(#0e1242 0%, #0e1242 100%);
   --red-color-1: #fa2354;
   --red-color-2: #{transparentize(#fa2354, 0.75)};
   --info-color: var(--red-color-1);
+  --overlay-bg: var(--info-color);
+  --overlay-bg-2: var(--red-color-2);
 }
+
+// reset
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+// utils
 
 $colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
   "white";
