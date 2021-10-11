@@ -26,14 +26,40 @@ export default defineComponent({
       }, 2000);
       state.timer = timer;
     };
+    const resetInterval = () => {
+      clearInterval(state.timer);
+      changeParticleByInterval();
+    };
+    const changeParticles = () => {
+      resetInterval();
+      state.morphParticles.changeParticles();
+    };
+    const onClickParticles = () => {
+      document.addEventListener("click", () => {
+        changeParticles();
+      });
+      document.addEventListener("touchstart", () => {
+        changeParticles();
+      });
+    };
+    const removeListeners = () => {
+      document.removeEventListener("click", () => {
+        changeParticles();
+      });
+      document.removeEventListener("touchstart", () => {
+        changeParticles();
+      });
+    };
     onMounted(() => {
       start();
+      onClickParticles();
       changeParticleByInterval();
     });
     onUnmounted(() => {
       if (state.timer) {
         clearInterval(state.timer);
       }
+      removeListeners();
     });
   },
 });

@@ -32,7 +32,6 @@ class MorphParticles extends Base {
     this.createLight();
     // this.createDebugPanel();
     this.trackMousePos();
-    this.onClickParticles();
     this.addListeners();
     this.setLoop();
   }
@@ -127,15 +126,6 @@ class MorphParticles extends Base {
       .max(1)
       .step(0.01)
       .name("transition1");
-  }
-  // 监听点击微粒
-  onClickParticles() {
-    document.addEventListener("click", () => {
-      this.changeParticles();
-    });
-    document.addEventListener("touchstart", () => {
-      this.changeParticles();
-    });
   }
   // 改变微粒
   changeParticles() {
