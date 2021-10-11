@@ -9,18 +9,22 @@
       <div class="container h-screen">
         <div class="absolute v-center">
           <div class="flex flex-col items-start space-y-12">
-            <div class="tracking-widest" data-splitting>我是ALPHARDEX</div>
-            <div class="font-bold text-6xl" data-splitting>
-              <div>一个专注于</div>
-              <div>创作特效的前端</div>
+            <div class="space-y-6">
+              <div class="text-6xl font-bold" data-splitting>
+                动画，是前端的灵魂
+              </div>
+              <div class="leading-relaxed">
+                <div data-splitting>
+                  这些年来，我致力于研究CSS、SVG和WebGL的奥秘
+                </div>
+                <div data-splitting>
+                  不为别的，就为了能给予用户至高的视觉体验
+                </div>
+              </div>
             </div>
-            <router-link
-              class="float-in"
-              style="animation-delay: 0.6s"
-              :to="{ name: 'About' }"
-            >
-              <my-btn>关于我</my-btn>
-            </router-link>
+            <my-btn class="float-in" style="animation-delay: 0.6s">
+              联系我
+            </my-btn>
           </div>
         </div>
       </div>
@@ -30,11 +34,11 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
-import MyBtn from "@/components/MyBtn.vue";
 import Splitting from "splitting";
+import MyBtn from "@/components/MyBtn.vue";
 
 export default defineComponent({
-  name: "SiteIntro",
+  name: "AboutMe",
   components: {
     MyBtn,
   },
@@ -45,5 +49,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped></style>

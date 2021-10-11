@@ -20,6 +20,7 @@
     "imagesloaded": "^4.1.4",
     "kyouka": "^1.2.8",
     "normalize.css": "^8.0.1",
+    "splitting": "^1.0.6",
     "three": "^0.133.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
