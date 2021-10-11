@@ -1,14 +1,9 @@
 <template>
-  <div class="transition-all duration-400" :class="{ 'opacity-0': !loading }">
-    <twisted-shape></twisted-shape>
-  </div>
-  <div class="transition-all duration-1000" :class="{ 'opacity-0': loading }">
-    <router-view v-slot="{ Component }">
-      <page-transition :name="`fade`">
-        <component :is="Component" />
-      </page-transition>
-    </router-view>
-  </div>
+  <router-view v-slot="{ Component }">
+    <page-transition :name="`fade`">
+      <component :is="Component" />
+    </page-transition>
+  </router-view>
 </template>
 
 <script lang="ts">
@@ -16,27 +11,13 @@ import "@alphardex/aqua.css/dist/aqua.min.css";
 import "normalize.css/normalize.css";
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
-import TwistedShape from "@/components/TwistedShape.vue";
 import PageTransition from "@/components/PageTransition.vue";
 import { defineComponent } from "@vue/runtime-core";
-import { onMounted, reactive, toRefs } from "vue";
-import { preloadImages } from "./utils/dom";
 
 export default defineComponent({
   name: "App",
   components: {
-    TwistedShape,
     PageTransition,
-  },
-  setup() {
-    const state = reactive({
-      loading: true,
-    });
-    onMounted(async () => {
-      await preloadImages();
-      state.loading = false;
-    });
-    return { ...toRefs(state) };
   },
 });
 </script>
@@ -54,7 +35,6 @@ body {
   --red-color-2: #{transparentize(#fa2354, 0.75)};
   --info-color: var(--red-color-1);
   --overlay-bg: var(--info-color);
-  --overlay-bg-2: var(--red-color-2);
   --transition-duration: 0.4s;
 }
 
@@ -67,10 +47,9 @@ a {
 
 // utils
 
-$colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
-  "white";
+$colors: "red", "blue";
 @each $c in $colors {
-  @for $i from 1 through 8 {
+  @for $i from 1 through 2 {
     .text-#{$c}-#{$i} {
       color: var(--#{$c}-color-#{$i});
     }
@@ -87,10 +66,6 @@ $colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
 
 .bg-blue-grad-1 {
   background: var(--blue-grad-1);
-}
-
-.h-05 {
-  height: 0.125rem;
 }
 
 .container {

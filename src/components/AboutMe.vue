@@ -18,7 +18,7 @@
                   这些年来，我致力于研究CSS、SVG和WebGL的奥秘
                 </div>
                 <div data-splitting>
-                  不为别的，就为了能给予用户至高的视觉体验
+                  不为别的，就为了能给大家带来至高的视觉体验
                 </div>
               </div>
             </div>
