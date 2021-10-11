@@ -22,13 +22,52 @@
                 </div>
               </div>
             </div>
-            <my-btn class="float-in" style="animation-delay: 0.6s">
+            <my-btn
+              class="float-in"
+              style="animation-delay: 0.6s"
+              @click="dialog.openContactDialog"
+            >
               联系我
             </my-btn>
           </div>
         </div>
       </div>
     </div>
+    <teleport to="#dialogs">
+      <div
+        class="backdrop"
+        :class="{ 'pointer-events-none': !dialog.isBackdropClosable.value }"
+        v-if="dialog.showBackdrop.value"
+        @click="dialog.clickCloseDialog"
+      ></div>
+    </teleport>
+    <teleport to="#dialogs">
+      <div class="dialog glass" v-show="dialog.showContactDialog.value">
+        <div class="space-y-2">
+          <div>微信：blacklurker</div>
+          <div>
+            Github:
+            <a target="_blank" href="https://github.com/alphardex">alphardex</a>
+          </div>
+          <div>
+            Codepen:
+            <a target="_blank" href="https://codepen.com/alphardex"
+              >alphardex</a
+            >
+          </div>
+          <div>
+            Twitter:
+            <a target="_blank" href="https://twitter.com/alphardex007"
+              >alphardex007</a
+            >
+          </div>
+        </div>
+        <div
+          class="close-icon cursor-pointer"
+          @click="dialog.closeAllDialog"
+        ></div>
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -36,6 +75,7 @@
 import { defineComponent, onMounted } from "vue";
 import Splitting from "splitting";
 import MyBtn from "@/components/MyBtn.vue";
+import useDialog from "@/hooks/useDialog";
 
 export default defineComponent({
   name: "AboutMe",
@@ -43,9 +83,11 @@ export default defineComponent({
     MyBtn,
   },
   setup() {
+    const dialog = useDialog();
     onMounted(() => {
       Splitting();
     });
+    return { dialog };
   },
 });
 </script>
