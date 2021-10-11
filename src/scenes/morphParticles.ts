@@ -19,6 +19,8 @@ class MorphParticles extends Base {
     this.params = {
       rotateSpeed: 0.01,
       pointColor: "#323094",
+      transitionDuration: 1.5,
+      transitionEase: "power3.out",
     };
     this.currentTransition = 0;
   }
@@ -131,25 +133,35 @@ class MorphParticles extends Base {
   changeParticles() {
     let currentTransition = this.currentTransition;
     const uniforms = this.morphParticlesMaterial.uniforms;
+    const duration = this.params.transitionDuration;
+    const ease = this.params.transitionEase;
     console.log(currentTransition);
     if (currentTransition === 0) {
       gsap.to(uniforms.uTransition1, {
         value: 1,
+        duration,
+        ease,
       });
       this.currentTransition += 1;
     } else if (currentTransition === 1) {
       gsap.to(uniforms.uTransition2, {
         value: 1,
+        duration,
+        ease,
       });
       this.currentTransition += 1;
     } else if (currentTransition === 2) {
       gsap.to(uniforms.uTransition2, {
         value: 0,
+        duration,
+        ease,
       });
       this.currentTransition += 1;
     } else if (currentTransition === 3) {
       gsap.to(uniforms.uTransition1, {
         value: 0,
+        duration,
+        ease,
       });
       this.currentTransition = 0;
     }
