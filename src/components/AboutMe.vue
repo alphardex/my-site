@@ -1,10 +1,5 @@
 <template>
   <div class="relative z-1">
-    <div class="absolute top-20 left-20">
-      <router-link :to="{ name: 'Home' }">
-        <div class="font-bold text-lg">ALPHARDEX</div>
-      </router-link>
-    </div>
     <div class="flex-center">
       <div class="container h-screen">
         <div class="absolute v-center">

@@ -1,10 +1,5 @@
 <template>
   <div class="relative z-1">
-    <div class="absolute top-20 left-20">
-      <router-link :to="{ name: 'Home' }">
-        <div class="font-bold text-lg fade-in">ALPHARDEX</div>
-      </router-link>
-    </div>
     <div class="flex-center">
       <div class="container h-screen">
         <div class="absolute v-center">
@@ -17,9 +12,9 @@
             <router-link
               class="float-in"
               style="animation-delay: 0.6s"
-              :to="{ name: 'About' }"
+              :to="{ name: 'Project' }"
             >
-              <my-btn>关于我</my-btn>
+              <my-btn>作品一览</my-btn>
             </router-link>
           </div>
         </div>

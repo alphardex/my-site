@@ -1,4 +1,5 @@
 <template>
+  <site-title></site-title>
   <router-view v-slot="{ Component }">
     <page-transition :name="`fade`">
       <component :is="Component" />
@@ -13,10 +14,12 @@ import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import PageTransition from "@/components/PageTransition.vue";
 import { defineComponent } from "@vue/runtime-core";
+import SiteTitle from "@/components/SiteTitle.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    SiteTitle,
     PageTransition,
   },
 });
