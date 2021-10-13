@@ -1,5 +1,5 @@
 <template>
-  <div class="my-btn relative border border-solid border-info cursor-pointer">
+  <div class="my-btn relative border border-solid border-info">
     <div class="my-btn-overlay absolute cover bg-red-2"></div>
     <div class="relative z-1">
       <div class="flex">

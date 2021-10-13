@@ -57,10 +57,7 @@
             >
           </div>
         </div>
-        <div
-          class="close-icon cursor-pointer"
-          @click="dialog.closeAllDialog"
-        ></div>
+        <div class="close-icon" @click="dialog.closeAllDialog"></div>
       </div>
     </teleport>
   </div>

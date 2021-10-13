@@ -1,5 +1,6 @@
 <template>
   <site-title></site-title>
+  <custom-cursor></custom-cursor>
   <router-view v-slot="{ Component }">
     <page-transition :name="`fade`">
       <component :is="Component" />
@@ -16,12 +17,14 @@ import "swiper/swiper-bundle.min.css";
 import PageTransition from "@/components/PageTransition.vue";
 import { defineComponent } from "@vue/runtime-core";
 import SiteTitle from "@/components/SiteTitle.vue";
+import CustomCursor from "@/components/CustomCursor.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     SiteTitle,
     PageTransition,
+    CustomCursor,
   },
 });
 </script>
@@ -30,6 +33,7 @@ export default defineComponent({
 body {
   color: white;
   background: var(--blue-grad-1);
+  cursor: none !important;
 }
 
 :root {
@@ -40,6 +44,8 @@ body {
   --info-color: var(--red-color-1);
   --overlay-bg: var(--info-color);
   --transition-duration: 0.4s;
+  --cursor-color: var(--red-color-1);
+  --cursor-hover-color: var(--red-color-2);
 }
 
 // reset
@@ -47,6 +53,7 @@ body {
 a {
   color: currentColor;
   text-decoration: none;
+  cursor: none !important;
 }
 
 // utils
