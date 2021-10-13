@@ -12,7 +12,7 @@
   >
     <swiper-slide class="flex-center" v-for="(item, i) in projectList" :key="i">
       <div class="relative">
-        <img :src="item.pic" class="block" alt="" />
+        <img :src="item.pic" class="block cursor-pointer" alt="" />
         <div class="desc absolute -left-24 v-center">
           <div class="font-bold text-7xl" data-splitting>
             {{ item.name }}
