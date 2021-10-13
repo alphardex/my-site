@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@alphardex/aqua.css": "^1.6.9",
+    "@vueuse/components": "^6.5.3",
+    "@vueuse/core": "^6.5.3",
     "cannon-es": "^0.18.0",
     "core-js": "^3.6.5",
     "dat.gui": "^0.7.7",
@@ -23,7 +25,7 @@
     "splitting": "^1.0.6",
     "swiper": "^6.4.15",
     "three": "^0.133.1",
-    "vue": "^3.0.0",
+    "vue": "^3.2.0",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
@@ -48,7 +50,7 @@
     "prettier": "^2.2.1",
     "raw-loader": "^4.0.2",
     "sass-loader": "^8.0.2",
-    "typescript": "~4.1.5"
+    "typescript": "^4.4.3"
   },
   "eslintConfig": {
     "root": true,

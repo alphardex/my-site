@@ -56,6 +56,8 @@ const lerp = (p1: number, p2: number, t: number) => {
   return p1 + (p2 - p1) * t;
 };
 
+const percent = (value: number, total: number) => (value / total) * 100;
+
 export {
   calcAspect,
   Point,
@@ -67,4 +69,5 @@ export {
   TAU,
   sphube,
   lerp,
+  percent,
 };

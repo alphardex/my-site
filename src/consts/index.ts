@@ -1,7 +1,7 @@
 const navItems = [
-  { name: "首页", path: "Home" },
-  { name: "项目", path: "Project" },
-  { name: "关于", path: "About" },
+  { name: "Home", path: "Home" },
+  { name: "Project", path: "Project" },
+  { name: "About", path: "About" },
 ];
 
 export { navItems };

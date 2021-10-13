@@ -4,7 +4,9 @@
     <div class="relative z-1">
       <div class="flex">
         <div class="flex-center w-40 h-16">
-          <slot></slot>
+          <magnet-mouse>
+            <slot></slot>
+          </magnet-mouse>
         </div>
         <div class="flex-center w-24 h-16">
           <div class="triangle-right text-white"></div>
@@ -16,9 +18,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import MagnetMouse from "@/components/MagnetMouse.vue";
 
 export default defineComponent({
   name: "MyBtn",
+  components: {
+    MagnetMouse,
+  },
 });
 </script>
 

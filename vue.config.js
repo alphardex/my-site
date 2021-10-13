@@ -1,4 +1,5 @@
 module.exports = {
+  productionSourceMap: false,
   chainWebpack: (config) => {
     config.module
       .rule("raw")
@@ -12,5 +13,16 @@ module.exports = {
       .use("glslify-loader")
       .loader("glslify-loader")
       .end();
+  },
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto",
+        },
+      ],
+    },
   },
 };
