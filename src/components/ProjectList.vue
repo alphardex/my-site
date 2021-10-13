@@ -16,11 +16,16 @@
           <img :src="item.pic" class="block" alt="" />
         </a>
         <div class="desc absolute -left-24 v-center">
-          <magnet-mouse>
+          <div class="space-y-8">
             <div class="font-bold text-7xl" data-splitting>
               {{ item.name }}
             </div>
-          </magnet-mouse>
+            <div
+              class="leading-relaxed"
+              v-html="item.desc"
+              data-splitting
+            ></div>
+          </div>
         </div>
       </div>
     </swiper-slide>
@@ -33,7 +38,6 @@ import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import { projectList } from "@/consts/projectList";
 import Splitting from "splitting";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import MagnetMouse from "@/components/MagnetMouse.vue";
 
 import SwiperCore, { Mousewheel } from "swiper";
 
@@ -50,7 +54,6 @@ export default defineComponent({
   components: {
     Swiper,
     SwiperSlide,
-    MagnetMouse,
   },
   setup() {
     const state = reactive<State>({
