@@ -12,6 +12,7 @@ import "@alphardex/aqua.css/dist/aqua.min.css";
 import "normalize.css/normalize.css";
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
+import "swiper/swiper-bundle.min.css";
 import PageTransition from "@/components/PageTransition.vue";
 import { defineComponent } from "@vue/runtime-core";
 import SiteTitle from "@/components/SiteTitle.vue";

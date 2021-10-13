@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute z-5 top-20 left-20">
+  <div class="fixed z-5 top-20 left-20">
     <router-link :to="{ name: 'Home' }">
       <div class="font-bold text-lg fade-in">ALPHARDEX</div>
     </router-link>

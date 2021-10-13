@@ -52,6 +52,10 @@ const sphube = (u1, v1, target) => {
   target.set(x, y, z);
 };
 
+const lerp = (p1: number, p2: number, t: number) => {
+  return p1 + (p2 - p1) * t;
+};
+
 export {
   calcAspect,
   Point,
@@ -62,4 +66,5 @@ export {
   point2CannonVec,
   TAU,
   sphube,
+  lerp,
 };
