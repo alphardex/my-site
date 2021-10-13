@@ -121,6 +121,12 @@ $colors: "red", "blue";
   }
 }
 
+.desc {
+  .char {
+    animation-delay: calc(0.6s + 0.04s * var(--char-index)) !important;
+  }
+}
+
 @keyframes flip-in {
   from {
     opacity: 1;

@@ -11,7 +11,14 @@
     @slideChange="onSlideChange"
   >
     <swiper-slide class="flex-center" v-for="(item, i) in projectList" :key="i">
-      <img :src="item.pic" alt="" />
+      <div class="relative">
+        <img :src="item.pic" class="block" alt="" />
+        <div class="desc absolute -left-24 v-center">
+          <div class="font-bold text-7xl" data-splitting>
+            {{ item.name }}
+          </div>
+        </div>
+      </div>
     </swiper-slide>
   </swiper>
 </template>
@@ -20,6 +27,7 @@
 import UnrollImages from "@/scenes/unrollImages";
 import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import { projectList } from "@/consts/projectList";
+import Splitting from "splitting";
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 import SwiperCore, { Mousewheel } from "swiper";
@@ -64,6 +72,7 @@ export default defineComponent({
       state.unrollImages = unrollImages;
     };
     onMounted(() => {
+      Splitting();
       start();
     });
     return { ...toRefs(state), onSwiper, onSlideChange };
@@ -75,5 +84,17 @@ export default defineComponent({
 img {
   width: 50rem;
   opacity: 0;
+}
+
+.swiper-slide {
+  .desc {
+    display: none;
+  }
+}
+
+.swiper-slide-active {
+  .desc {
+    display: block;
+  }
 }
 </style>
