@@ -15,7 +15,7 @@
         <a target="_blank" :href="item.url">
           <img :src="item.pic" class="block" alt="" />
         </a>
-        <div class="desc absolute -left-24 v-center">
+        <div class="desc absolute -left-24 v-center" v-if="isImageLoaded">
           <div class="space-y-8">
             <div class="font-bold text-7xl" data-splitting>
               {{ item.name }}
@@ -47,6 +47,7 @@ interface State {
   projectList: any;
   swiper: any;
   unrollImages: UnrollImages;
+  isImageLoaded: boolean;
 }
 
 export default defineComponent({
@@ -60,6 +61,7 @@ export default defineComponent({
       projectList,
       swiper: null,
       unrollImages: null,
+      isImageLoaded: false,
     });
     const onSwiper = (swiper: any) => {
       state.swiper = swiper;
@@ -78,11 +80,12 @@ export default defineComponent({
     const start = async () => {
       const unrollImages = new UnrollImages(".unroll-images", false);
       await unrollImages.init();
+      state.isImageLoaded = true;
       state.unrollImages = unrollImages;
     };
-    onMounted(() => {
+    onMounted(async () => {
+      await start();
       Splitting();
-      start();
     });
     return { ...toRefs(state), onSwiper, onSlideChange };
   },
