@@ -1,5 +1,6 @@
 <template>
   <site-title></site-title>
+  <site-nav></site-nav>
   <custom-cursor></custom-cursor>
   <router-view v-slot="{ Component }">
     <page-transition :name="`fade`">
@@ -17,12 +18,14 @@ import "swiper/swiper-bundle.min.css";
 import PageTransition from "@/components/PageTransition.vue";
 import { defineComponent } from "@vue/runtime-core";
 import SiteTitle from "@/components/SiteTitle.vue";
+import SiteNav from "@/components/SiteNav.vue";
 import CustomCursor from "@/components/CustomCursor.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     SiteTitle,
+    SiteNav,
     PageTransition,
     CustomCursor,
   },
