@@ -4,8 +4,10 @@
       <div class="container h-screen">
         <div class="absolute v-center">
           <div class="flex flex-col items-start space-y-12">
-            <div class="tracking-widest" data-splitting>我是ALPHARDEX</div>
-            <div class="font-bold text-6xl" data-splitting>
+            <div class="staggered-rise-in tracking-widest" data-splitting>
+              我是ALPHARDEX
+            </div>
+            <div class="staggered-rise-in font-bold text-6xl" data-splitting>
               <div>一个专注于</div>
               <div>创作特效的前端</div>
             </div>

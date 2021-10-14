@@ -21,11 +21,11 @@
           v-if="isImageLoaded"
         >
           <div class="space-y-8">
-            <div class="font-bold text-7xl" data-splitting>
+            <div class="staggered-rise-in font-bold text-7xl" data-splitting>
               {{ item.name }}
             </div>
             <div
-              class="leading-relaxed"
+              class="staggered-rise-in leading-relaxed"
               v-html="item.desc"
               data-splitting
             ></div>

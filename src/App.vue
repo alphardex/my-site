@@ -91,7 +91,7 @@ $colors: "red", "blue";
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.splitting {
+.staggered-rise-in {
   .word {
     overflow: hidden;
   }

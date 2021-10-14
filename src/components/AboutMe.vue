@@ -5,14 +5,14 @@
         <div class="absolute v-center">
           <div class="flex flex-col items-start space-y-12">
             <div class="space-y-6">
-              <div class="text-6xl font-bold" data-splitting>
+              <div class="text-6xl font-bold staggered-rise-in" data-splitting>
                 动画，是前端的灵魂
               </div>
               <div class="leading-relaxed">
-                <div data-splitting>
+                <div class="staggered-rise-in" data-splitting>
                   这些年来，我致力于研究CSS、SVG和WebGL的奥秘
                 </div>
-                <div data-splitting>
+                <div class="staggered-rise-in" data-splitting>
                   不为别的，就为了能给大家带来至高的视觉体验
                 </div>
               </div>
