@@ -75,9 +75,7 @@ export default defineComponent({
       if (state.unrollImages) {
         state.unrollImages.scroller.scroll.target = -swiper.translate;
         state.unrollImages.revealImage(
-          state.unrollImages.imageDOMMeshObjGroup.imageDOMMeshObjs[
-            activeIndex
-          ] as any
+          state.unrollImages.makuGroup.makus[activeIndex]
         );
       }
     };
@@ -86,6 +84,7 @@ export default defineComponent({
       await unrollImages.init();
       state.isImageLoaded = true;
       state.unrollImages = unrollImages;
+      state.unrollImages.revealImage(state.unrollImages.makuGroup.makus[0]);
     };
     onMounted(async () => {
       await start();

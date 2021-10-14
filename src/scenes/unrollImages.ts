@@ -6,9 +6,10 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import {
   preloadImages,
-  ImageDOMMeshObjGroup,
+  MakuGroup,
   Scroller,
-  DOMMeshObject,
+  Maku,
+  getScreenFov,
 } from "@/utils/dom";
 import { Base } from "./base";
 // @ts-ignore
@@ -23,7 +24,7 @@ import unrollImagesPostprocessingFragmentShader from "../shaders/unrollImages/po
 class UnrollImages extends Base {
   clock!: THREE.Clock;
   unrollImagesMaterial!: THREE.ShaderMaterial;
-  imageDOMMeshObjGroup: ImageDOMMeshObjGroup;
+  makuGroup: MakuGroup;
   scroller!: Scroller;
   customPass!: ShaderPass;
   params!: any;
@@ -31,7 +32,7 @@ class UnrollImages extends Base {
     super(sel, debug);
     this.clock = new THREE.Clock();
     this.cameraPosition = new THREE.Vector3(0, 0, 600);
-    const fov = this.getScreenFov();
+    const fov = getScreenFov(this.cameraPosition.z);
     this.perspectiveCameraParams = {
       fov,
       near: 100,
@@ -54,17 +55,11 @@ class UnrollImages extends Base {
     this.createEverything();
     this.addListeners();
     this.setLoop();
-    // this.revealMultipleImages(
-    //   this.imageDOMMeshObjGroup.imageDOMMeshObjs,
-    //   this.params.revealStagger
-    // );
-    // this.onClickToggleImages();
-    this.revealImage(this.imageDOMMeshObjGroup.imageDOMMeshObjs[0]);
   }
   // 创建一切
   createEverything() {
     this.createUnrollImagesMaterial();
-    this.createImageDOMMeshObjGroup();
+    this.createMakuGroup();
     this.createPostprocessingEffect();
   }
   // 创建材质
@@ -98,21 +93,22 @@ class UnrollImages extends Base {
     this.unrollImagesMaterial = unrollImagesMaterial;
   }
   // 创建图片DOM物体组
-  createImageDOMMeshObjGroup() {
-    const imageDOMMeshObjGroup = new ImageDOMMeshObjGroup();
+  createMakuGroup() {
+    const makuGroup = new MakuGroup();
     const { scene, unrollImagesMaterial } = this;
     const images = [...document.querySelectorAll("img")];
     images.map((image) => {
-      imageDOMMeshObjGroup.addObject(
+      const maku = new Maku(
         image,
-        scene,
         unrollImagesMaterial,
-        false,
+        scene,
+        "mesh",
         "scale"
       );
+      makuGroup.add(maku);
     });
-    imageDOMMeshObjGroup.setObjsPosition();
-    this.imageDOMMeshObjGroup = imageDOMMeshObjGroup;
+    makuGroup.setPositions();
+    this.makuGroup = makuGroup;
   }
   // 创建后期处理特效
   createPostprocessingEffect() {
@@ -142,7 +138,7 @@ class UnrollImages extends Base {
   // 监听事件
   addListeners() {
     this.onResize();
-    // this.onScroll();
+    this.onScroll();
   }
   // 监听滚动
   onScroll() {
@@ -157,7 +153,7 @@ class UnrollImages extends Base {
   syncScroll() {
     this.scroller.syncScroll();
     const currentScrollY = this.scroller.scroll.current;
-    this.imageDOMMeshObjGroup.setObjsPosition(currentScrollY);
+    this.makuGroup.setPositions(currentScrollY);
   }
   // 更新Pass的时间
   updatePassTime() {
@@ -166,8 +162,8 @@ class UnrollImages extends Base {
     uniforms.uTime.value = elapsedTime;
   }
   // 展开图片
-  revealImage(imageDOMMeshObj: DOMMeshObject) {
-    const uProgress = (imageDOMMeshObj.mesh.material as any).uniforms.uProgress;
+  revealImage(maku: Maku) {
+    const uProgress = (maku.mesh.material as any).uniforms.uProgress;
     gsap.to(uProgress, {
       value: 1,
       duration: this.params.revealDuration,
@@ -175,9 +171,9 @@ class UnrollImages extends Base {
     });
   }
   // 展开多个图片
-  revealMultipleImages(imageDOMMeshObjs: DOMMeshObject[], stagger = 0) {
-    const alluProgress = imageDOMMeshObjs.map(
-      (obj) => (obj.mesh.material as any).uniforms.uProgress
+  revealMultipleImages(makus: Maku[], stagger = 0) {
+    const alluProgress = makus.map(
+      (obj) => (obj.mesh.material as THREE.ShaderMaterial).uniforms.uProgress
     );
     gsap.to(alluProgress, {
       value: 1,
@@ -187,8 +183,8 @@ class UnrollImages extends Base {
     });
   }
   // 收起图片
-  hideImage(imageDOMMeshObj: DOMMeshObject) {
-    const uProgress = (imageDOMMeshObj.mesh.material as any).uniforms.uProgress;
+  hideImage(maku: Maku) {
+    const uProgress = (maku.mesh.material as any).uniforms.uProgress;
     gsap.to(uProgress, {
       value: 0,
       duration: this.params.revealDuration,
@@ -197,7 +193,7 @@ class UnrollImages extends Base {
   }
   // 点击更改图片状态
   onClickToggleImages() {
-    this.imageDOMMeshObjGroup.imageDOMMeshObjs.forEach((obj) => {
+    this.makuGroup.makus.forEach((obj) => {
       obj.el.addEventListener("click", () => {
         const uProgress = (obj.mesh.material as any).uniforms.uProgress;
         if (uProgress.value < 0.5) {
