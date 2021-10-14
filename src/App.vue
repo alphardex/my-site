@@ -1,7 +1,6 @@
 <template>
   <site-title></site-title>
   <site-nav></site-nav>
-  <custom-cursor></custom-cursor>
   <router-view v-slot="{ Component }">
     <page-transition :name="`fade`">
       <component :is="Component" />
@@ -19,7 +18,6 @@ import PageTransition from "@/components/PageTransition.vue";
 import { defineComponent } from "@vue/runtime-core";
 import SiteTitle from "@/components/SiteTitle.vue";
 import SiteNav from "@/components/SiteNav.vue";
-import CustomCursor from "@/components/CustomCursor.vue";
 
 export default defineComponent({
   name: "App",
@@ -27,7 +25,6 @@ export default defineComponent({
     SiteTitle,
     SiteNav,
     PageTransition,
-    CustomCursor,
   },
 });
 </script>
@@ -36,7 +33,6 @@ export default defineComponent({
 body {
   color: white;
   background: var(--blue-grad-1);
-  cursor: none !important;
 }
 
 :root {
@@ -56,7 +52,6 @@ body {
 a {
   color: currentColor;
   text-decoration: none;
-  cursor: none !important;
 }
 
 // utils
