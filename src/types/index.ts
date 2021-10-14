@@ -18,3 +18,8 @@ export interface Scroll {
 export type MeshType = "mesh" | "points";
 
 export type MeshSizeType = "size" | "scale";
+
+export type HTMLIVCElement =
+  | HTMLImageElement
+  | HTMLVideoElement
+  | HTMLCanvasElement;
