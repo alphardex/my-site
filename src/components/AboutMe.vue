@@ -38,25 +38,7 @@
     </teleport>
     <teleport to="#dialogs">
       <div class="dialog glass" v-show="dialog.showContactDialog.value">
-        <div class="space-y-2">
-          <div>微信：blacklurker</div>
-          <div>
-            Github:
-            <a target="_blank" href="https://github.com/alphardex">alphardex</a>
-          </div>
-          <div>
-            Codepen:
-            <a target="_blank" href="https://codepen.com/alphardex"
-              >alphardex</a
-            >
-          </div>
-          <div>
-            Twitter:
-            <a target="_blank" href="https://twitter.com/alphardex007"
-              >alphardex007</a
-            >
-          </div>
-        </div>
+        <contact-info></contact-info>
         <div class="close-icon" @click="dialog.closeAllDialog"></div>
       </div>
     </teleport>
@@ -68,11 +50,13 @@ import { defineComponent, onMounted } from "vue";
 import Splitting from "splitting";
 import MyBtn from "@/components/MyBtn.vue";
 import useDialog from "@/hooks/useDialog";
+import ContactInfo from "@/components/ContactInfo.vue";
 
 export default defineComponent({
   name: "AboutMe",
   components: {
     MyBtn,
+    ContactInfo,
   },
   setup() {
     const dialog = useDialog();

@@ -1,11 +1,16 @@
 <template>
-  <site-title></site-title>
-  <site-nav></site-nav>
-  <router-view v-slot="{ Component }">
-    <page-transition :name="`fade`">
-      <component :is="Component" />
-    </page-transition>
-  </router-view>
+  <div v-if="!isMobile">
+    <site-title></site-title>
+    <site-nav></site-nav>
+    <router-view v-slot="{ Component }">
+      <page-transition :name="`fade`">
+        <component :is="Component" />
+      </page-transition>
+    </router-view>
+  </div>
+  <div v-else>
+    <mobile-page></mobile-page>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,16 +20,25 @@ import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import "swiper/swiper-bundle.min.css";
 import PageTransition from "@/components/PageTransition.vue";
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent, reactive, toRefs } from "@vue/runtime-core";
 import SiteTitle from "@/components/SiteTitle.vue";
 import SiteNav from "@/components/SiteNav.vue";
+import MobilePage from "@/components/MobilePage.vue";
+import { isMobile } from "./consts";
 
 export default defineComponent({
   name: "App",
   components: {
     SiteTitle,
     SiteNav,
+    MobilePage,
     PageTransition,
+  },
+  setup() {
+    const state = reactive({
+      isMobile,
+    });
+    return { ...toRefs(state) };
   },
 });
 </script>
