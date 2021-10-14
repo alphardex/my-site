@@ -18,8 +18,8 @@
               </div>
             </div>
             <my-btn
-              class="float-in"
-              style="animation-delay: 0.6s"
+              class="xyz-in"
+              xyz="fade down-50% duration-6 delay-6"
               @click="dialog.openContactDialog"
             >
               联系我

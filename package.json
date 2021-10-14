@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@alphardex/aqua.css": "^1.6.9",
+    "@animxyz/vue3": "^0.6.4",
     "@vueuse/components": "^6.5.3",
     "@vueuse/core": "^6.5.3",
     "cannon-es": "^0.18.0",

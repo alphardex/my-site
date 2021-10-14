@@ -91,19 +91,6 @@ $colors: "red", "blue";
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-// animations
-
-.float-in {
-  animation: float-in 0.6s both;
-}
-
-@keyframes float-in {
-  from {
-    transform: translateY(1rem);
-    opacity: 0;
-  }
-}
-
 .splitting {
   .word {
     overflow: hidden;

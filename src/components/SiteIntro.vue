@@ -10,8 +10,8 @@
               <div>创作特效的前端</div>
             </div>
             <router-link
-              class="float-in"
-              style="animation-delay: 0.6s"
+              class="xyz-in"
+              xyz="fade down-50% duration-6 delay-6"
               :to="{ name: 'Project' }"
             >
               <my-btn>作品一览</my-btn>
