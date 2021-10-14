@@ -43,8 +43,6 @@ body {
   --info-color: var(--red-color-1);
   --overlay-bg: var(--info-color);
   --transition-duration: 0.4s;
-  --cursor-color: var(--red-color-1);
-  --cursor-hover-color: var(--red-color-2);
 }
 
 // reset
@@ -73,10 +71,6 @@ $colors: "red", "blue";
   }
 }
 
-.bg-blue-grad-1 {
-  background: var(--blue-grad-1);
-}
-
 .container {
   width: 1000px;
 }
@@ -93,7 +87,6 @@ $colors: "red", "blue";
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -112,30 +105,23 @@ $colors: "red", "blue";
 }
 
 .splitting {
-  perspective: 15vw;
-
-  * {
-    transform-style: preserve-3d;
+  .word {
+    overflow: hidden;
   }
 
   .char {
-    transform-origin: center center -40px;
-    backface-visibility: hidden;
-    animation: flip-in 1s cubic-bezier(0.425, 0.005, 0, 1) both;
-    animation-delay: calc(0.04s * var(--char-index));
+    animation: rise-in 0.8s var(--ease-out-cubic) both;
+    animation-delay: calc(var(--basic-delay, 0s) + 0.05s * var(--char-index));
   }
 }
 
-.desc {
-  .char {
-    animation-delay: calc(0.6s + 0.04s * var(--char-index)) !important;
-  }
-}
-
-@keyframes flip-in {
+@keyframes rise-in {
   from {
-    opacity: 1;
-    transform: rotateY(120deg);
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
   }
 }
 </style>

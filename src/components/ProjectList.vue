@@ -15,7 +15,11 @@
         <a target="_blank" :href="item.url">
           <img :src="item.pic" class="block" alt="" />
         </a>
-        <div class="desc absolute -left-24 v-center" v-if="isImageLoaded">
+        <div
+          class="desc absolute -left-24 v-center"
+          style="--basic-delay: 0.6s"
+          v-if="isImageLoaded"
+        >
           <div class="space-y-8">
             <div class="font-bold text-7xl" data-splitting>
               {{ item.name }}
