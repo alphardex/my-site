@@ -86,6 +86,9 @@ class UnrollImages extends Base {
         uAngle: {
           value: ky.deg2rad(this.params.revealAngle),
         },
+        uFloat: {
+          value: 0,
+        },
       },
     });
     this.unrollImagesMaterial = unrollImagesMaterial;
@@ -137,6 +140,7 @@ class UnrollImages extends Base {
   update() {
     this.syncScroll();
     this.updatePassTime();
+    this.updateMesh();
   }
   // 同步滚动
   syncScroll() {
@@ -149,6 +153,23 @@ class UnrollImages extends Base {
     const uniforms = this.customPass.uniforms;
     const elapsedTime = this.clock.getElapsedTime();
     uniforms.uTime.value = elapsedTime;
+  }
+  // 更新网格
+  updateMesh() {
+    const makus = this.makuGroup.makus;
+    makus.forEach((maku) => {
+      const material = maku.mesh.material as THREE.ShaderMaterial;
+      const uniforms = material.uniforms;
+      const elapsedTime = this.clock.getElapsedTime();
+      if (uniforms.uProgress.value > 0.8) {
+        uniforms.uTime.value = elapsedTime;
+        gsap.to(uniforms.uFloat, {
+          value: 1,
+          duration: this.params.revealDuration,
+          ease: this.params.revealEase,
+        });
+      }
+    });
   }
   // 展开图片
   revealImage(maku: Maku) {
