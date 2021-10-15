@@ -22,6 +22,7 @@ class Maku {
   el!: HTMLIVCElement; // 元素
   rect!: DOMRect; // 元素矩阵
   mesh!: THREE.Mesh | THREE.Points; // 网格
+  scene!: THREE.Scene; // 所属场景
   constructor(
     el: HTMLIVCElement,
     material: THREE.ShaderMaterial,
@@ -34,6 +35,7 @@ class Maku {
     }
   ) {
     this.el = el;
+    this.scene = scene;
 
     const texture = new THREE.Texture(el);
     texture.needsUpdate = true;
@@ -79,6 +81,10 @@ class Maku {
     const y = -(top + height / 2 - window.innerHeight / 2) + deltaY;
     mesh.position.set(x, y, 0);
   }
+  // 消除
+  destroy() {
+    this.scene.remove(this.mesh);
+  }
 }
 
 // 同步元素的集合
@@ -92,12 +98,22 @@ class MakuGroup {
     this.makus.push(maku);
     return maku;
   }
+  // 批量添加
+  addMultiple(makus: Maku[]) {
+    makus.forEach((maku) => {
+      this.add(maku);
+    });
+  }
   // 批量同步元素位置
   setPositions(deltaY = window.scrollY) {
     const { makus } = this;
     makus.forEach((obj) => {
       obj.setPosition(deltaY);
     });
+  }
+  // 清空所有元素
+  clear() {
+    this.makus.forEach((maku) => maku.destroy());
   }
 }
 
