@@ -4,29 +4,27 @@ import { MeshObject } from "@/types";
 import { calcAspect } from "@/utils/math";
 import { MeshPhysicsObject } from "@/utils/physics";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { getNormalizedMousePos } from "@/utils/dom";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import Stats from "three/examples/jsm/libs/stats.module";
+import { MouseTracker } from "@/utils/dom";
 
 class Base {
   debug: boolean;
   container: HTMLElement | null;
-  scene!: THREE.Scene;
-  camera!: THREE.PerspectiveCamera | THREE.OrthographicCamera;
-  rendererParams!: Record<string, any>;
   perspectiveCameraParams!: Record<string, any>;
   orthographicCameraParams!: Record<string, any>;
   cameraPosition!: THREE.Vector3;
   lookAtPosition!: THREE.Vector3;
+  rendererParams!: Record<string, any>;
+  mouseTracker!: MouseTracker;
+  scene!: THREE.Scene;
+  camera!: THREE.PerspectiveCamera | THREE.OrthographicCamera;
   renderer!: THREE.WebGLRenderer;
   controls!: OrbitControls;
-  mousePos!: THREE.Vector2;
   raycaster!: THREE.Raycaster;
-  sound!: THREE.Audio;
   stats!: Stats;
   composer!: EffectComposer;
   shaderMaterial!: THREE.ShaderMaterial;
-  mouseSpeed!: number;
   constructor(sel: string, debug = false) {
     this.debug = debug;
     this.container = document.querySelector(sel);
@@ -49,8 +47,7 @@ class Base {
         antialias: true,
       },
     };
-    this.mousePos = new THREE.Vector2(0, 0);
-    this.mouseSpeed = 0;
+    this.mouseTracker = new MouseTracker();
   }
   // 初始化
   init() {
@@ -128,10 +125,6 @@ class Base {
     this.container?.appendChild(renderer.domElement);
     this.renderer = renderer;
     this.renderer.setClearColor(0x000000, 0);
-  }
-  // 允许投影
-  enableShadow() {
-    this.renderer.shadowMap.enabled = true;
   }
   // 调整渲染器尺寸
   resizeRendererToDisplaySize() {
@@ -245,43 +238,14 @@ class Base {
       }
     });
   }
-  // 创建音效源
-  createAudioSource() {
-    const listener = new THREE.AudioListener();
-    this.camera.add(listener);
-    const sound = new THREE.Audio(listener);
-    this.sound = sound;
-  }
   // 创建点选模型
   createRaycaster() {
     this.raycaster = new THREE.Raycaster();
-    this.trackMousePos();
-  }
-  // 追踪鼠标位置
-  trackMousePos() {
-    window.addEventListener("mousemove", (e) => {
-      this.setMousePos(e);
-    });
-    window.addEventListener(
-      "touchstart",
-      (e: TouchEvent) => {
-        this.setMousePos(e.touches[0]);
-      },
-      { passive: false }
-    );
-    window.addEventListener("touchmove", (e: TouchEvent) => {
-      this.setMousePos(e.touches[0]);
-    });
-  }
-  // 设置鼠标位置
-  setMousePos(e: MouseEvent | Touch) {
-    const { x, y } = getNormalizedMousePos(e);
-    this.mousePos.x = x;
-    this.mousePos.y = y;
+    this.mouseTracker.trackMousePos();
   }
   // 获取点击物
   getInterSects(container = this.scene): THREE.Intersection<THREE.Object3D>[] {
-    this.raycaster.setFromCamera(this.mousePos, this.camera);
+    this.raycaster.setFromCamera(this.mouseTracker.mousePos, this.camera);
     const intersects = this.raycaster.intersectObjects(
       container.children,
       true
@@ -297,29 +261,6 @@ class Base {
     }
     const { object } = intersect;
     return target === object ? intersect : null;
-  }
-  // 追踪鼠标速度
-  trackMouseSpeed() {
-    // https://stackoverflow.com/questions/6417036/track-mouse-speed-with-js
-    let lastMouseX = -1;
-    let lastMouseY = -1;
-    let mouseSpeed = 0;
-    window.addEventListener("mousemove", (e) => {
-      const mousex = e.pageX;
-      const mousey = e.pageY;
-      if (lastMouseX > -1) {
-        mouseSpeed = Math.max(
-          Math.abs(mousex - lastMouseX),
-          Math.abs(mousey - lastMouseY)
-        );
-        this.mouseSpeed = mouseSpeed / 100;
-      }
-      lastMouseX = mousex;
-      lastMouseY = mousey;
-    });
-    document.addEventListener("mouseleave", () => {
-      this.mouseSpeed = 0;
-    });
   }
 }
 
