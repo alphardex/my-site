@@ -17,8 +17,8 @@ const preloadImages = (sel = "img") => {
 };
 
 class MouseTracker {
-  mousePos!: THREE.Vector2;
-  mouseSpeed!: number;
+  mousePos: THREE.Vector2;
+  mouseSpeed: number;
   constructor() {
     this.mousePos = new THREE.Vector2(0, 0);
     this.mouseSpeed = 0;
