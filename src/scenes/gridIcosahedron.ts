@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Base } from "./base";
+import { Base } from "@/commons/base";
 import gridIcosahedronShapeVertexShader from "../shaders/gridIcosahedron/shape/vertex.glsl";
 import gridIcosahedronShapeFragmentShader from "../shaders/gridIcosahedron/shape/fragment.glsl";
 import gridIcosahedronEdgeVertexShader from "../shaders/gridIcosahedron/edge/vertex.glsl";

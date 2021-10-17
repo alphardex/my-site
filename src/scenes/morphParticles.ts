@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import * as dat from "dat.gui";
-import { Base } from "./base";
+import { Base } from "@/commons/base";
 import morphParticlesVertexShader from "../shaders/morphParticles/vertex.glsl";
 import morphParticlesFragmentShader from "../shaders/morphParticles/fragment.glsl";
 import gsap from "gsap";
