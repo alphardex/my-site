@@ -1,9 +1,7 @@
 import * as THREE from "three";
 import * as dat from "dat.gui";
 import { Base } from "./base";
-// @ts-ignore
 import morphParticlesVertexShader from "../shaders/morphParticles/vertex.glsl";
-// @ts-ignore
 import morphParticlesFragmentShader from "../shaders/morphParticles/fragment.glsl";
 import gsap from "gsap";
 import { sampleParticlesPositionFromMesh } from "@/utils/misc";
