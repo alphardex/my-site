@@ -1,0 +1,60 @@
+$colors: "red", "orange", "yellow", "green", "blue", "purple", "brown", "black",
+  "white";
+@each $c in $colors {
+  @for $i from 1 through 12 {
+    .text-#{$c}-#{$i} {
+      color: var(--#{$c}-color-#{$i});
+    }
+
+    .bg-#{$c}-#{$i} {
+      background: var(--#{$c}-color-#{$i});
+    }
+
+    .bg-#{$c}-grad-#{$i} {
+      background-image: var(--#{$c}-grad-#{$i});
+    }
+
+    .border-#{$c}-#{$i} {
+      border-color: var(--#{$c}-color-#{$i});
+    }
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.text-shadow-1 {
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.staggered-rise-in {
+  .word {
+    overflow: hidden;
+  }
+
+  .char {
+    animation: rise-in 0.8s var(--ease-out-cubic) both;
+    animation-delay: calc(var(--basic-delay, 0s) + 0.05s * var(--char-index));
+  }
+
+  &.no-delay {
+    .char {
+      animation-delay: calc(var(--basic-delay, 0s));
+    }
+  }
+}
+
+@keyframes rise-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}

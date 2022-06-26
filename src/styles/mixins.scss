@@ -1,0 +1,44 @@
+@mixin sp-layout {
+  @media screen and (max-width: 750px) {
+    @content;
+  }
+}
+
+@mixin pc-layout {
+  @media screen and (min-width: 751px) {
+    @content;
+  }
+}
+
+@mixin iphone-x-below-layout {
+  @media screen and (max-height: 723px) {
+    @content;
+  }
+}
+
+@mixin flex-center($display: flex) {
+  display: $display;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin cover(
+  $top: 0,
+  $left: 0,
+  $width: 100%,
+  $height: 100%,
+  $position: absolute
+) {
+  position: $position;
+  top: $top;
+  left: $left;
+  width: $width;
+  height: $height;
+}
+
+@mixin inset($inset: 0) {
+  top: $inset;
+  left: $inset;
+  right: $inset;
+  bottom: $inset;
+}

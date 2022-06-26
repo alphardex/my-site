@@ -1,88 +1,44 @@
 {
   "name": "my-site",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite --host",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview --port 4173 --host",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@alphardex/aqua.css": "^1.6.9",
-    "@animxyz/vue3": "^0.6.4",
-    "@vueuse/components": "^6.5.3",
-    "@vueuse/core": "^6.5.3",
-    "cannon-es": "^0.18.0",
-    "core-js": "^3.6.5",
-    "dat.gui": "^0.7.7",
-    "glsl-constants": "^1.0.0",
-    "glsl-noise": "0.0.0",
-    "glsl-rotate": "^1.1.0",
-    "glslify": "^7.1.1",
-    "gsap": "^3.8.0",
-    "imagesloaded": "^4.1.4",
-    "kyouka": "^1.3.0",
-    "maku.js": "^1.0.1",
-    "normalize.css": "^8.0.1",
+    "@alphardex/aqua.css": "^1.7.0",
+    "css.gg": "^2.0.0",
+    "glsl-noise": "^0.0.0",
+    "glsl-takara": "^1.1.1",
+    "kokomi.js": "^1.9.21",
+    "kyouka": "^1.3.6",
+    "lil-gui": "^0.16.1",
+    "pinia": "^2.0.14",
     "splitting": "^1.0.6",
-    "swiper": "^6.4.15",
-    "three": "^0.133.1",
-    "vue": "^3.2.0",
-    "vue-router": "^4.0.0-0"
+    "swiper": "^8.2.4",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
-    "@types/imagesloaded": "^4.1.2",
-    "@types/swiper": "^5.4.3",
-    "@types/three": "^0.133.1",
-    "@typescript-eslint/eslint-plugin": "^4.18.0",
-    "@typescript-eslint/parser": "^4.18.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/eslint-config-typescript": "^7.0.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.0.0",
-    "glslify-loader": "^2.0.0",
-    "node-sass": "^4.12.0",
-    "prettier": "^2.2.1",
-    "raw-loader": "^4.0.2",
-    "sass-loader": "^8.0.2",
-    "typescript": "^4.4.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "@vue/typescript/recommended",
-      "@vue/prettier",
-      "@vue/prettier/@typescript-eslint"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2020
-    },
-    "rules": {
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/camelcase": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-this-alias": "off",
-      "@typescript-eslint/no-var-requires": "off",
-      "prefer-const": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off"
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@rushstack/eslint-patch": "^1.1.0",
+    "@types/node": "^16.11.41",
+    "@types/three": "^0.139.0",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "sass": "^1.53.0",
+    "typescript": "~4.7.4",
+    "vite": "^2.9.12",
+    "vite-plugin-glslify": "^2.0.1",
+    "vue-tsc": "^0.38.1"
+  }
 }

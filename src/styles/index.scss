@@ -1,0 +1,14 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--blue-grad-1);
+}
+
+@import "./vars.scss";
+@import "./mixins.scss";
+@import "./reset.scss";
+@import "./icons.scss";
+@import "./utils.scss";
+@import "./common.scss";
+@import "./animations.scss";
+@import "./element-ui.scss";

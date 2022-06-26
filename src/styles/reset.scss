@@ -1,0 +1,25 @@
+* {
+  border-width: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+input {
+  outline: none;
+}
+
+summary {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
