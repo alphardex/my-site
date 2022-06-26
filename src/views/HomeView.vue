@@ -47,10 +47,16 @@ onMounted(async () => {
       class="relative transition-opacity duration-600"
       :class="{ hollow: state.loading }"
     >
-      <div class="fixed z-0">
-        <grid-ico ref="gridIco"></grid-ico>
+      <div v-show="!state.loading">
+        <div class="fixed z-0">
+          <grid-ico ref="gridIco"></grid-ico>
+        </div>
+        <site-intro
+          class="z-1"
+          ref="siteIntro"
+          @next="gotoGallery"
+        ></site-intro>
       </div>
-      <site-intro class="z-1" ref="siteIntro" @next="gotoGallery"></site-intro>
       <div
         class="absolute z-2 top-0 left-0 cover transition-opacity duration-600"
         :class="{
