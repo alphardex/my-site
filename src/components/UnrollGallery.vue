@@ -16,22 +16,16 @@ let sketch: ReturnType<typeof createSketch> | null = null;
 const state = reactive({
   projectList: [
     {
-      name: "大数据监控平台",
-      pic: getImage("/src/assets/big-screen.jpg"),
-      url: "http://show.js2cs.com",
-      desc: "一个数据可视化大屏项目，主要用于动态展示公司的各种数据统计<br/>使用Vue.js进行开发，利用Vuex进行数据的管理，Echarts进行数据的可视化<br/>封装了常用的图表组件，适配了所有主流PC和大屏的屏幕尺寸",
-    },
-    {
       name: "方普智能装备公司官网",
       pic: getImage("/src/assets/farpull.jpg"),
       url: "http://www.farpull.com",
       desc: "一个官网项目，主要用于企业树立形象，展示产品，对外宣传等<br/>使用Vue.js进行开发<br/>同时适配了PC端和移动端",
     },
     {
-      name: "运营H5",
-      pic: getImage("/src/assets/h5game.jpg"),
-      url: "http://s.cs090.com/4334112/",
-      desc: "平时开发的各种运营H5项目，种类包括游戏类、滑屏类、互动类等<br/>滑屏互动类H5主要用CSS和GSAP来开发，游戏类H5主要用Phaser引擎来开发<br/>封装了许多常用的业务组件，实现了很多种特效和游戏逻辑",
+      name: "夏末-自由地3D创作",
+      pic: getImage("/src/assets/xiamo.png"),
+      url: "https://www.xiamo.fun",
+      desc: "该项目是一个极简的在线3D建模与渲染工具<br/>为创作者提供3D创作全流程功能<br/>主要负责SDF函数建模Shader部分的开发",
     },
     {
       name: "aqua.css",
@@ -44,6 +38,12 @@ const state = reactive({
       pic: getImage("/src/assets/maku.jpg"),
       url: "https://github.com/alphardex/maku.js",
       desc: "一个Web 3D的辅助框架<br/>能使HTML标签带上炫酷的着色器特效<br/>有助于实现图片相关的3D特效",
+    },
+    {
+      name: "运营H5",
+      pic: getImage("/src/assets/h5game.jpg"),
+      url: "http://s.cs090.com/4334112/",
+      desc: "平时开发的各种运营H5项目，种类包括游戏类、滑屏类、互动类等<br/>滑屏互动类H5主要用CSS和GSAP来开发，游戏类H5主要用Phaser引擎来开发<br/>封装了许多常用的业务组件，实现了很多种特效和游戏逻辑",
     },
   ],
   swiper: null,

@@ -10,23 +10,33 @@ import edgeFragmentShader from "./shaders/edge/fragment.glsl";
 import { getBaryCoord } from "./utils";
 
 class Icosahedron extends kokomi.Component {
+  am: kokomi.AssetManager;
   ico: THREE.Group | null;
   shapeMaterial: THREE.ShaderMaterial | null;
   edgeMaterial: THREE.ShaderMaterial | null;
   constructor(base: kokomi.Base) {
     super(base);
 
+    this.am = new kokomi.AssetManager(base, [
+      {
+        name: "icoTexture",
+        type: "texture",
+        path: icoTexture,
+      },
+    ]);
     this.ico = null;
     this.shapeMaterial = null;
     this.edgeMaterial = null;
   }
   // 初始化
   addExisting() {
-    this.createIco();
-    this.createShapeMaterial();
-    this.createIcoShape();
-    this.createEdgeMaterial();
-    this.createIcoEdge();
+    this.am.on("ready", () => {
+      this.createIco();
+      this.createShapeMaterial();
+      this.createIcoShape();
+      this.createEdgeMaterial();
+      this.createIcoEdge();
+    });
   }
   // 创建图形组
   createIco() {
@@ -36,8 +46,7 @@ class Icosahedron extends kokomi.Component {
   }
   // 创建图形材质
   createShapeMaterial() {
-    const loader = new THREE.TextureLoader();
-    const texture = loader.load(icoTexture);
+    const texture = this.am.items["icoTexture"];
     texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
     const shapeMaterial = new THREE.ShaderMaterial({
       vertexShader: shapeVertexShader,
@@ -71,7 +80,7 @@ class Icosahedron extends kokomi.Component {
   }
   // 创建二十面体图形
   createIcoShape() {
-    const geometry = new THREE.IcosahedronBufferGeometry(1, 1);
+    const geometry = new THREE.IcosahedronGeometry(1, 1);
     const material = this.shapeMaterial!;
     const mesh = new THREE.Mesh(geometry, material);
     this.base.scene.add(mesh);
@@ -105,7 +114,7 @@ class Icosahedron extends kokomi.Component {
   }
   // 创建二十面体边框
   createIcoEdge() {
-    const geometry = new THREE.IcosahedronBufferGeometry(1.001, 1);
+    const geometry = new THREE.IcosahedronGeometry(1.001, 1);
     getBaryCoord(geometry);
     const material = this.edgeMaterial;
     const mesh = new THREE.Mesh(geometry, material!);
