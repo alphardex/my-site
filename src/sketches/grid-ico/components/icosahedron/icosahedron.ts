@@ -9,6 +9,8 @@ import edgeVertexShader from "./shaders/edge/vertex.glsl";
 import edgeFragmentShader from "./shaders/edge/fragment.glsl";
 import { getBaryCoord } from "./utils";
 
+import ky from "kyouka";
+
 class Icosahedron extends kokomi.Component {
   am: kokomi.AssetManager;
   ico: THREE.Group | null;

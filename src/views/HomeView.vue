@@ -4,7 +4,7 @@ import SiteIntro from "@/components/SiteIntro.vue";
 import UnrollGallery from "@/components/UnrollGallery.vue";
 import MobilePage from "@/components/MobilePage.vue";
 
-import { onMounted, reactive, ref } from "vue";
+import { computed, onMounted, reactive, ref } from "vue";
 
 import * as kokomi from "kokomi.js";
 import ky from "kyouka";
@@ -34,6 +34,10 @@ const state = reactive({
   showGallery: false,
 });
 
+const isLoading = computed(() => {
+  return state.loading || !gridIco.value?.state.isLoaded;
+});
+
 onMounted(async () => {
   await kokomi.preloadImages();
   await ky.sleep(200);
@@ -45,9 +49,9 @@ onMounted(async () => {
   <template v-if="!environ.isMobile">
     <div
       class="relative transition-opacity duration-600"
-      :class="{ hollow: state.loading }"
+      :class="{ hollow: isLoading }"
     >
-      <div v-show="!state.loading">
+      <div v-show="!isLoading">
         <div class="fixed z-0">
           <grid-ico ref="gridIco"></grid-ico>
         </div>

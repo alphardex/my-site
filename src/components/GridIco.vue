@@ -1,15 +1,24 @@
 <script lang="ts" setup>
 import createSketch from "@/sketches/grid-ico";
 
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 
 import gsap from "gsap";
 
+import ky from "kyouka";
+
 let sketch: ReturnType<typeof createSketch> | null = null;
+
+const state = reactive({
+  isLoaded: false,
+});
 
 onMounted(() => {
   setTimeout(() => {
     sketch = createSketch("#grid-ico-sketch");
+    sketch.ico.am.on("ready", () => {
+      state.isLoaded = true;
+    });
   });
 });
 
@@ -62,6 +71,7 @@ const returnBack = () => {
 defineExpose({
   moveForward,
   returnBack,
+  state,
 });
 </script>
 
